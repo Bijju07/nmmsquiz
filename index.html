@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="kn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ಎನ್‌ಎಂಎಂಎಸ್ ಜಿಮ್ಯಾಟ್ 2017 · ರಸಪ್ರಶ್ನೆ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Noto Sans Kannada', 'Segoe UI', system-ui, sans-serif;
+    }
+    body {
+      background: #eef3f9;
+      margin: 0;
+      padding: 2rem 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      width: 100%;
+      background: white;
+      border-radius: 32px;
+      box-shadow: 0 20px 40px rgba(0, 20, 30, 0.12);
+      padding: 2rem 2rem 2.5rem;
+      position: relative;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #0b2e4b;
+      margin-top: 0;
+      margin-bottom: 0.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: #0b2e4b;
+      color: white;
+      border-radius: 40px;
+      padding: 0.2rem 1rem;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .subhead {
+      color: #2c5a7a;
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      border-left: 5px solid #3b82f6;
+      padding-left: 1rem;
+      background: #f0f7ff;
+      border-radius: 0 12px 12px 0;
+      line-height: 1.5;
+    }
+
+    /* ---- ಹೆಸರು ---- */
+    .name-section {
+      background: #f9fcff;
+      border: 1px solid #d9e8f5;
+      border-radius: 20px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+    .name-section label {
+      font-weight: 600;
+      color: #0b2e4b;
+      font-size: 1rem;
+    }
+    .name-section input {
+      flex: 1;
+      min-width: 180px;
+      padding: 0.7rem 1.2rem;
+      border-radius: 40px;
+      border: 2px solid #c5d9ec;
+      font-size: 1rem;
+      outline: none;
+      transition: 0.15s;
+      font-family: inherit;
+    }
+    .name-section input:focus {
+      border-color: #1a5a9a;
+      box-shadow: 0 0 0 4px rgba(26, 90, 154, 0.12);
+    }
+
+    /* ---- ಪ್ರಗತಿ ಪಟ್ಟಿ ---- */
+    .progress-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .progress-track {
+      flex: 1;
+      height: 8px;
+      background: #dbe7f2;
+      border-radius: 40px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1a5a9a, #3b9eff);
+      border-radius: 40px;
+      transition: width 0.3s ease;
+    }
+    .progress-text {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a5a9a;
+      min-width: 80px;
+      text-align: right;
+    }
+
+    /* ---- ಪ್ರಶ್ನೆ ಕಾರ್ಡ್ ---- */
+    .question-card {
+      background: #f9fcff;
+      border: 1px solid #d9e8f5;
+      border-radius: 24px;
+      padding: 1.8rem 1.8rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+    }
+    .q-num {
+      display: inline-block;
+      background: #2c5a7a;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      margin-bottom: 0.8rem;
+    }
+    .q-title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #1a5a9a;
+      margin-bottom: 0.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .q-text {
+      font-size: 1.15rem;
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+      color: #1a2e40;
+      line-height: 1.7;
+    }
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 0.7rem 1.2rem;
+      border-radius: 16px;
+      background: #f0f6fd;
+      transition: 0.1s;
+      border: 2px solid transparent;
+      line-height: 1.5;
+    }
+    .option:hover {
+      background: #e0edfa;
+      border-color: #aac7e3;
+    }
+    .option input[type="radio"] {
+      accent-color: #1a5a9a;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+      margin: 0;
+      flex-shrink: 0;
+    }
+    .option.selected {
+      background: #d0e2ff;
+      border-color: #2c7ad0;
+    }
+
+    /* ---- ವಿವರಣೆ ---- */
+    .explain {
+      font-size: 0.95rem;
+      background: #e6f0fa;
+      border-left: 6px solid #3b82f6;
+      padding: 0.9rem 1.2rem;
+      border-radius: 12px;
+      margin-top: 1rem;
+      color: #0b2e4b;
+      line-height: 1.6;
+    }
+    .explain strong {
+      color: #0b3f6b;
+    }
+    .explain.wrong-explain {
+      background: #fde8e8;
+      border-left-color: #dc3545;
+    }
+    .explain.correct-explain {
+      background: #e8f5e9;
+      border-left-color: #28a745;
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    /* ---- ಸಂಬಂಧಿತ ಚಿತ್ರ ---- */
+    .related-image {
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .related-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      border: 2px solid #d9e8f5;
+      background: white;
+      padding: 0.5rem;
+    }
+    .related-image .img-label {
+      font-size: 0.8rem;
+      color: #6e8ba8;
+      margin-top: 0.3rem;
+    }
+
+    /* ---- ಬಟನ್‌ಗಳು ---- */
+    .btn-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      gap: 1rem;
+    }
+    .btn {
+      background: #1a5a9a;
+      color: white;
+      border: none;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: 0.15s;
+      box-shadow: 0 6px 14px rgba(26, 90, 154, 0.2);
+      border: 1px solid #0b3f6b;
+      font-family: inherit;
+    }
+    .btn:hover {
+      background: #0e4170;
+      transform: scale(1.02);
+    }
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+    .btn-outline {
+      background: white;
+      color: #1a5a9a;
+      border: 2px solid #1a5a9a;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #e6f0fa;
+      transform: scale(1.02);
+    }
+    .btn-success {
+      background: #1e7e34;
+      border-color: #145523;
+    }
+    .btn-success:hover {
+      background: #145523;
+    }
+
+    /* ---- ಅಂಕ ಪ್ಯಾನೆಲ್ ---- */
+    .score-panel {
+      background: #0b2e4b;
+      color: white;
+      padding: 1.8rem 2rem;
+      border-radius: 28px;
+      text-align: center;
+      margin-top: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .score-panel h2 {
+      margin: 0;
+      font-weight: 500;
+      font-size: 1.3rem;
+    }
+    .score-value {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1;
+      color: #ffd966;
+    }
+    .score-total {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+    .score-message {
+      font-weight: 400;
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6e8ba8;
+      font-size: 0.8rem;
+      margin-top: 2rem;
+    }
+
+    /* ---- ಫಲಿತಾಂಶ ವಿಮರ್ಶೆ ---- */
+    .review-section {
+      margin-top: 2rem;
+      border-top: 3px solid #d0e2f5;
+      padding-top: 1.5rem;
+    }
+    .review-section h3 {
+      color: #0b2e4b;
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .review-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      border: 2px solid #c5d9ec;
+      background: white;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: 0.15s;
+      font-family: inherit;
+      color: #2c5a7a;
+    }
+    .filter-btn:hover {
+      background: #f0f7ff;
+      border-color: #1a5a9a;
+    }
+    .filter-btn.active {
+      background: #1a5a9a;
+      color: white;
+      border-color: #1a5a9a;
+    }
+    .review-card {
+      background: #f9fcff;
+      border: 1px solid #d9e8f5;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1.2rem;
+      border-left: 6px solid #ccc;
+    }
+    .review-card.correct {
+      border-left-color: #28a745;
+    }
+    .review-card.wrong {
+      border-left-color: #dc3545;
+    }
+    .review-card.unanswered {
+      border-left-color: #ffc107;
+    }
+    .review-card .r-q-num {
+      display: inline-block;
+      background: #2c5a7a;
+      color: white;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 0.15rem 0.8rem;
+      border-radius: 30px;
+      margin-bottom: 0.5rem;
+    }
+    .review-card .r-q-title {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #1a5a9a;
+      margin-bottom: 0.3rem;
+    }
+    .review-card .r-q-text {
+      font-size: 1.05rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+      color: #1a2e40;
+      line-height: 1.6;
+    }
+    .review-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .review-option {
+      padding: 0.5rem 1rem;
+      border-radius: 12px;
+      background: #f0f6fd;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 2px solid transparent;
+    }
+    .review-option.correct-option {
+      background: #d4edda;
+      border-color: #28a745;
+      font-weight: 600;
+    }
+    .review-option.wrong-option {
+      background: #f8d7da;
+      border-color: #dc3545;
+      font-weight: 600;
+    }
+    .review-option .tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 0.1rem 0.6rem;
+      border-radius: 20px;
+      margin-left: auto;
+      white-space: nowrap;
+    }
+    .tag-correct {
+      background: #28a745;
+      color: white;
+    }
+    .tag-wrong {
+      background: #dc3545;
+      color: white;
+    }
+
+    @media (max-width: 600px) {
+      .container { padding: 1.2rem; }
+      h1 { font-size: 1.4rem; }
+      .question-card { padding: 1.2rem; }
+      .q-text { font-size: 1rem; }
+      .option { font-size: 0.9rem; padding: 0.6rem 1rem; }
+      .btn { padding: 0.6rem 1.4rem; font-size: 0.9rem; }
+      .score-panel { flex-direction: column; text-align: center; }
+      .review-card { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <h1>🧠 ಎನ್‌ಎಂಎಂಎಸ್ · ಜಿಮ್ಯಾಟ್ 2017 <span class="badge">ರಸಪ್ರಶ್ನೆ</span></h1>
+  <div class="subhead">
+    ನ್ಯಾಷನಲ್ ಮೀನ್ಸ್ ಕಮ್-ಮೆರಿಟ್ ಸ್ಕಾಲರ್‌ಶಿಪ್ · ಸಾಮಾನ್ಯ ಬೌದ್ಧಿಕ ಸಾಮರ್ಥ್ಯ ಪರೀಕ್ಷೆ<br>
+    ಒಂದೊಂದಾಗಿ ಪ್ರಶ್ನೆಗಳಿಗೆ ಉತ್ತರಿಸಿ · ಅಂಕ, ವಿವರಣೆ ಮತ್ತು ಚಿತ್ರಗಳನ್ನು ಪಡೆಯಿರಿ
+  </div>
+
+  <!-- ಹೆಸರು -->
+  <div class="name-section">
+    <label for="studentName">🎓 ವಿದ್ಯಾರ್ಥಿಯ ಹೆಸರು:</label>
+    <input type="text" id="studentName" placeholder="ನಿಮ್ಮ ಹೆಸರು ನಮೂದಿಸಿ..." autocomplete="off">
+  </div>
+
+  <!-- ಪ್ರಗತಿ -->
+  <div class="progress-bar">
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+    <div class="progress-text" id="progressText">0 / 225</div>
+  </div>
+
+  <!-- ಪ್ರಶ್ನೆ ಪ್ರದೇಶ -->
+  <div id="quizArea"></div>
+
+  <!-- ಬಟನ್‌ಗಳು -->
+  <div class="btn-bar">
+    <button class="btn btn-outline" id="prevBtn" disabled>◀ ಹಿಂದೆ</button>
+    <button class="btn" id="nextBtn">ಮುಂದೆ ▶</button>
+    <button class="btn btn-success hidden" id="submitBtn">✅ ಸಲ್ಲಿಸಿ ಮತ್ತು ಅಂಕ ನೀಡಿ</button>
+    <button class="btn btn-outline" id="resetBtn">🔄 ಮರುಹೊಂದಿಸಿ</button>
+  </div>
+
+  <!-- ಅಂಕ ಪ್ಯಾನೆಲ್ -->
+  <div id="scorePanel" class="score-panel hidden">
+    <h2 id="scoreName">ವಿದ್ಯಾರ್ಥಿ</h2>
+    <div><span class="score-value" id="scoreValue">0</span><span class="score-total"> / 225</span></div>
+    <div class="score-message" id="scoreMessage"></div>
+  </div>
+
+  <!-- ಫಲಿತಾಂಶ ವಿಮರ್ಶೆ -->
+  <div id="reviewSection" class="review-section hidden">
+    <h3>📋 ಫಲಿತಾಂಶ ವಿಮರ್ಶೆ</h3>
+    <div class="review-filters">
+      <button class="filter-btn active" data-filter="all">ಎಲ್ಲಾ</button>
+      <button class="filter-btn" data-filter="wrong">ತಪ್ಪು ಉತ್ತರಗಳು</button>
+      <button class="filter-btn" data-filter="correct">ಸರಿ ಉತ್ತರಗಳು</button>
+      <button class="filter-btn" data-filter="unanswered">ಉತ್ತರಿಸದ ಪ್ರಶ್ನೆಗಳು</button>
+    </div>
+    <div id="reviewList"></div>
+  </div>
+
+  <div class="footer-note">ಎನ್‌ಎಂಎಂಎಸ್-ಜಿಮ್ಯಾಟ್ 2017 ಆಧಾರಿತ · ಕರ್ನಾಟಕ ಡಿಎಸ್‌ಇಆರ್‌ಟಿ</div>
+</div>
+
+<script>
+  // =============================================================
+  // 1. ಪ್ರಶ್ನೆ ಬ್ಯಾಂಕ್ (ಎಲ್ಲಾ 225) + ಶೀರ್ಷಿಕೆ + ಚಿತ್ರ
+  // =============================================================
+  const questions = [
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "1) 3, 5, 8, 13, 20, ?", opts: ["29","30","31","33"], ans: 2, exp: "ವ್ಯತ್ಯಾಸಗಳು ಅನುಕ್ರಮ ಅವಿಭಾಜ್ಯ ಸಂಖ್ಯೆಗಳು: +2, +3, +5, +7, +11 → 20+11=31" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "2) 1, 2, 6, 15, 31, ?", opts: ["56","55","49","47"], ans: 1, exp: "ವ್ಯತ್ಯಾಸಗಳು ವರ್ಗ ಸಂಖ್ಯೆಗಳು: +1, +4, +9, +16, +25 → 31+25=56" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "3) 1, 1, 2, 6, ?, 120", opts: ["10","18","20","24"], ans: 4, exp: "1,2,3,4,5 ರಿಂದ ಗುಣಿಸಿ: 1×1=1, 1×2=2, 2×3=6, 6×4=24, 24×5=120" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "4) 25, 24, ?, 19, 15, 10", opts: ["20","21","22","23"], ans: 3, exp: "1,2,3,4,5 ಕಳೆಯಿರಿ: 25-1=24, 24-2=22, 22-3=19, 19-4=15, 15-5=10" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "5) 26, 37, 50, 65, 82, ?", opts: ["99","101","102","122"], ans: 2, exp: "n²+1: 5²+1=26, 6²+1=37, 7²+1=50, 8²+1=65, 9²+1=82, 10²+1=101" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "6) 2, 12, 30, 56, ?, 132", opts: ["90","100","110","125"], ans: 1, exp: "n²–n: 2²–2=2, 4²–4=12, 6²–6=30, 8²–8=56, 10²–10=90, 12²–12=132" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "7) 9, 17, 32, 61, 118, ?", opts: ["219","226","231","232"], ans: 3, exp: "×2 –1, –2, –3, –4, –5: 9×2–1=17, 17×2–2=32, 32×2–3=61, 61×2–4=118, 118×2–5=231" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "8) 5, 2, 8, 6, 14, 14, ?, ?", opts: ["24,28","23,26","17,26","26,34"], ans: 2, exp: "ಎರಡು ಪರ್ಯಾಯ ಶ್ರೇಣಿಗಳು: ಬೆಸ +3,+6,+9; ಸಮ +4,+8,+12 → 23,26" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "9) 180, 100, 48, 18, 4, ?", opts: ["3","2","1","0"], ans: 4, exp: "n³–n²: 6³–6²=180, 5³–5²=100, 4³–4²=48, 3³–3²=18, 2³–2²=4, 1³–1²=0" },
+    { title: "ಸಂಖ್ಯಾ ಶ್ರೇಣಿ", q: "10) 4, 4, 7, 11, ?, ?, 19, 67", opts: ["12,24","12,30","6,30","19,28"], ans: 2, exp: "ಪರ್ಯಾಯ: n²+3 ಮತ್ತು n³+3: 1²+3=4, 1³+3=4, 2²+3=7, 2³+3=11, 3²+3=12, 3³+3=30, 4²+3=19, 4³+3=67" },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "11) 4, 7, 12, 18, 28, 39", opts: ["4","12","18","39"], ans: 3, exp: "ವ್ಯತ್ಯಾಸಗಳು +3,+5,+7,+9,+11 ಆಗಿರಬೇಕು. 12+7=19, 18 ಅಲ್ಲ" },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "12) 5, 3, 8, 6, 11, 10, 14, 12, 17", opts: ["10","11","14","17"], ans: 1, exp: "ಮಾದರಿ: 5,3 (–2); 8,6 (–2); 11,10 (–1) ತಪ್ಪು; 14,12 (–2); 17. ತಪ್ಪು ಸಂಖ್ಯೆ 11" },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "13) 2, 3, 5, 9, 17, 35", opts: ["3","5","17","35"], ans: 4, exp: "×2–1: 2×2–1=3, 3×2–1=5, 5×2–1=9, 9×2–1=17, 17×2–1=33, 35 ಅಲ್ಲ" },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "14) 1, 5, 20, 60, 120, 240", opts: ["240","120","60","20"], ans: 1, exp: "5,4,3,2,1 ರಿಂದ ಗುಣಿಸಿ: 1×5=5, 5×4=20, 20×3=60, 60×2=120, 120×1=120, 240 ಅಲ್ಲ" },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "15) 2, 3, 8, 27, 108, 565", opts: ["565","108","27","8"], ans: 1, exp: "×1+1, ×2+2, ×3+3, ×4+4: 2×1+1=3, 3×2+2=8, 8×3+3=27, 27×4+4=112, 108 ಅಲ್ಲ" },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "16) 1, 1, 4, 8, 9, 27, 36, 64", opts: ["64","36","27","4"], ans: 1, exp: "ವರ್ಗಗಳು 1,4,9,16,25… ಮತ್ತು ಘನಗಳು 1,8,27,64. 36 ಬದಲಿಗೆ 16. 36 ತಪ್ಪು." },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "17) 6, 14, 20, 30, 42, 56", opts: ["14","20","30","42"], ans: 2, exp: "n²+n: 2²+2=6, 3²+3=12 (14 ಅಲ್ಲ), 4²+4=20, 5²+5=30, 6²+6=42, 7²+7=56. 14 ತಪ್ಪು." },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "18) 20, 30, 40, 56, 72, 90", opts: ["20","30","40","56"], ans: 1, exp: "+10,+12,+14,+16,+18. 20+10=30, 30+12=42 (40 ಅಲ್ಲ). 40 ತಪ್ಪು." },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "19) 13, 14, 18, 26, 43, 68", opts: ["13","14","18","26"], ans: 2, exp: "+1,+4,+8,+16,+25. 13+1=14, 14+4=18, 18+8=26, 26+16=42 (43 ಅಲ್ಲ). 43 ತಪ್ಪು, ಆದರೆ ಆಯ್ಕೆ 14 (ಮೂಲ ಕೀ)." },
+    { title: "ತಪ್ಪು ಸಂಖ್ಯೆ", q: "20) 7, 12, 9, 13, 11, 16, 17, 21", opts: ["7","9","11","13"], ans: 3, exp: "ಎರಡು ಶ್ರೇಣಿಗಳು: 7,9,11,17 ಮತ್ತು 12,13,16,21. ತಪ್ಪು 11 (ಮೂಲ ಕೀ)." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "21) 1) 1  2) 9  3) 26  4) 49", opts: ["1","9","26","49"], ans: 3, exp: "26 ಪೂರ್ಣ ವರ್ಗವಲ್ಲ (1,9,49 ವರ್ಗಗಳು)." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "22) 1) 12  2) 26  3) 50  4) 82", opts: ["12","26","50","82"], ans: 1, exp: "12 n²+1 ಅಲ್ಲ (3²+3=12). ಉಳಿದವು 5²+1=26, 7²+1=50, 9²+1=82." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "23) 1) 0  2) 4  3) 18  4) 50", opts: ["0","4","18","50"], ans: 4, exp: "n³–n²: 1³–1²=0, 2³–2²=4, 3³–3²=18, 4³–4²=48, 50 ಅಲ್ಲ. 50 ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "24) 1) 124  2) 243  3) 601  4) 700", opts: ["124","243","601","700"], ans: 3, exp: "124,243,700 ಅಂಕಿಗಳ ಮೊತ್ತ 7; 601 ಸಹ 7. ಆದರೆ 243 ಮೊತ್ತ 9. 243 ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "25) 1) 110  2) 181  3) 280  4) 282", opts: ["110","181","280","282"], ans: 2, exp: "110,280,282 ಮಧ್ಯದ ಅಂಕಿ = ಮೊದಲ+ಕೊನೆ. 181: 1+1=2, 8 ಅಲ್ಲ." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "26) 1) 120, 101  2) 37, 26  3) 99, 82  4) 143, 122", opts: ["120,101","37,26","99,82","143,122"], ans: 2, exp: "37,26 n²+1:(n-1)²+1 ಅಲ್ಲ. ಉಳಿದವು ಅನುಸರಿಸುತ್ತವೆ." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "27) 1) 2,2  2) 5,17  3) 6,24  4) 3,5", opts: ["2,2","5,17","6,24","3,5"], ans: 3, exp: "6,24: 6²–6=30, 24 ಅಲ್ಲ. ಮೂಲ ಕೀ: 3." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "28) 1) 5,124  2) 3,28  3) 4,65  4) 9,730", opts: ["5,124","3,28","4,65","9,730"], ans: 1, exp: "5,124: 5³–1=124; ಉಳಿದವು n³+1: 3³+1=28, 4³+1=65, 9³+1=730." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "29) 1) 82,16  2) 63,18  3) 54,22  4) 46,24", opts: ["82,16","63,18","54,22","46,24"], ans: 3, exp: "54,22: 5×4=20, 22 ಅಲ್ಲ. ಉಳಿದವು: 8×2=16, 6×3=18, 4×6=24." },
+    { title: "ವಿಭಿನ್ನ ಸಂಖ್ಯೆ", q: "30) 1) 3,7  2) 2,5  3) 11,13  4) 23,29", opts: ["3,7","2,5","11,13","23,29"], ans: 1, exp: "3 ಮತ್ತು 7 ಅನುಕ್ರಮ ಅವಿಭಾಜ್ಯಗಳಲ್ಲ. ಉಳಿದವು ಅನುಕ್ರಮ ಅವಿಭಾಜ್ಯಗಳು." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "31) 9 : 25 :: 36 : ?", opts: ["64","81","100","144"], ans: 2, exp: "9=3², 25=5²; 36=6², ಮುಂದಿನ 9²=81." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "32) 3 : 12 :: 7 : ?", opts: ["42","49","55","56"], ans: 4, exp: "3×4=12; 7×8=56." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "33) 5 : 27 :: 8 : ?", opts: ["51","61","66","68"], ans: 1, exp: "5²+2=27; 8²+2=66, ಆದರೆ ಮೂಲ ಕೀ 51." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "34) 441 : 3 :: 772 : ?", opts: ["3","4","5","6"], ans: 1, exp: "4+4+1=9, 9/3=3; 7+7+2=16, 16/4=4. ಮೂಲ ಕೀ 3." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "35) 42 : ? :: 156 : 210", opts: ["72","90","110","132"], ans: 2, exp: "ಮೂಲ ಕೀ: 90." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "36) 6 : 64 :: ? : 169", opts: ["11","12","13","14"], ans: 3, exp: "6³–? 64=4³? 13²=169. ಆದ್ದರಿಂದ 13." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "37) 7 : 11 :: 73 : ?", opts: ["82","85","88","89"], ans: 4, exp: "7+4=11; 73+16=89." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "38) ? : 27 :: 4 : 125", opts: ["0","1","2","3"], ans: 4, exp: "4³=64, 125=5³. ಆದ್ದರಿಂದ ?=3³=27, ?=3." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "39) 14 : 25 :: ? : 81", opts: ["12","16","29","63"], ans: 2, exp: "14+11=25; ?+?=81. ಮೂಲ ಕೀ 16." },
+    { title: "ಸಾಮ್ಯತೆ ಸಂಖ್ಯೆ", q: "40) 10 : 216 :: 12 : ?", opts: ["343","512","729","1000"], ans: 2, exp: "6³=216, 10-4=6. 12-4=8, 8³=512." },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "41) 2 3 6 / 4 12 48 / 7 9 ?", opts: ["61","62","63","64"], ans: 3, exp: "ಸಾಲು1: 2×3=6; ಸಾಲು2: 4×12=48; ಸಾಲು3: 7×9=63" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "42) 1 2 5 / 9 6 ? / 12 10 244", opts: ["93","117","123","129"], ans: 2, exp: "1²+2²=5; 9²+6²=117; 12²+10²=244" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "43) 15 8 ? / 6 12 18 / 80 86 350", opts: ["15","16","19","20"], ans: 3, exp: "ಕಾಲಂ1: 15×6–10=80; ಕಾಲಂ2: 8×12–10=86; ಕಾಲಂ3: 20×18–10=350" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "44) 7 3 23 / 8 9 ? / 10 5 35", opts: ["43","45","48","50"], ans: 1, exp: "7×2+3×3=23; 8×2+9×3=43; 10×2+5×3=35" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "45) 20 ? 40 / 14 5 16 / 24 13 36", opts: ["12","15","16","24"], ans: 3, exp: "ಮೂಲ ಕೀ: 16." },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "46) 10 4 7 / 5 12 8 / 25 ? 28", opts: ["24","23","22","21"], ans: 1, exp: "(10×5)÷2=25; (4×12)÷2=24; (7×8)÷2=28" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "47) 15 9 13 / 8 4 7 / ? 25 36", opts: ["81","64","49","9"], ans: 3, exp: "(15–8)²=49; (9–4)²=25; (13–7)²=36" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "48) 14 11 29 / 26 13 39 / 12 15 ?", opts: ["68","42","40","36"], ans: 4, exp: "(14÷2)+11×2=29; (26÷2)+13×2=39; (12÷2)+15×2=36" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "49) 8 66 7 / 13 114 8 / 17 ? 9", opts: ["160","163","166","170"], ans: 2, exp: "(8×7)+10=66; (13×8)+10=114; (17×9)+10=163" },
+    { title: "ಮಾತೃಕೆ ಸಂಖ್ಯೆ", q: "50) 3 6 27 / 6 4 72 / 9 10 ?", opts: ["109","405","415","425"], ans: 2, exp: "3²(6÷2)=27; 6²(4÷2)=72; 9²(10÷2)=405" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "51) 2 * 5 * 3 * 7", opts: ["+,−,=","×,=,−","=,×,−","×,−,="], ans: 4, exp: "2×5–3=7" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "52) 32 * 8 * 6 * 2", opts: ["−,=,÷","÷,−,=","÷,=,−","=,÷,−"], ans: 2, exp: "32÷8=6–2" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "53) 8 * 4 * 6 * 2", opts: ["=,+,−","÷,=,−","−,+,=","=,−,+"], ans: 1, exp: "8=4+6–2" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "54) 8 * 9 * 2 * 26", opts: ["×,+,=","+,×,=","=,×,−","=,+,×"], ans: 1, exp: "8+9×2=26" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "55) 10 * 5 * 0 * 15", opts: ["=,+,−","÷,=,−","+,×,>","+,×,<"], ans: 4, exp: "10+5×0<15" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "56) 35 * 5 * 2 * 14", opts: ["=,×,÷","÷,=,×","÷,×,=","×,=,+"], ans: 3, exp: "35÷5×2=14" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "57) 18 * 3 * 5 * 3", opts: ["=,×,+","×,=,+","=,+,−","÷,=,+"], ans: 1, exp: "18=3×5+3" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "58) 95 * 19 * 14 * 11", opts: ["−,+,=","÷,+,>","=,−,×","=,+,×"], ans: 2, exp: "95÷19+14>11" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "59) 48 * 8 * 7 * 6", opts: ["+,×,=","=,+,×","−,=,×","−,<,×"], ans: 2, exp: "48–8<7×6" },
+    { title: "ಚಿಹ್ನೆಗಳ ಆದೇಶ", q: "60) 15 * 63 * 7 * 12", opts: ["+,÷,>","+,=,÷","−,+,>",">,÷,+"], ans: 1, exp: "15+63÷7>12" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "61) 8 ÷ 2 = 30 + 3", opts: ["8 ಮತ್ತು 3","2 ಮತ್ತು 30","= ಮತ್ತು +","÷ ಮತ್ತು +"], ans: 1, exp: "8+2=30÷3 → 10=10" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "62) 16 – 21 = 9 ÷ 3", opts: ["16 ಮತ್ತು 9","21 ಮತ್ತು 9","= ಮತ್ತು –","– ಮತ್ತು ÷"], ans: 2, exp: "16–9=21÷3 → 7=7" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "63) 6 = 23 × 3 + 5", opts: ["6 ಮತ್ತು 23","6 ಮತ್ತು 5","= ಮತ್ತು ×","= ಮತ್ತು +"], ans: 1, exp: "23=6×3+5" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "64) 42 – 18 = 21 ÷ 14", opts: ["42 ಮತ್ತು 21","18 ಮತ್ತು 14","= ಮತ್ತು ÷","÷ ಮತ್ತು –"], ans: 1, exp: "21–18=42÷14 → 3=3" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "65) 96 = 4 ÷ 26 – 2", opts: ["96 ಮತ್ತು 26","4 ಮತ್ತು 26","= ಮತ್ತು ÷","= ಮತ್ತು –"], ans: 3, exp: "96÷4=26–2 → 24=24" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "66) 50 = 5 + 27 ÷ 43 – 6", opts: ["50 ಮತ್ತು 43","+ ಮತ್ತು ÷","= ಮತ್ತು ÷","5 ಮತ್ತು 6"], ans: 4, exp: "50÷5+27=43–6 → 10+27=37" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "67) 15 × 5 ÷ 4 + 6 = 18", opts: ["÷ ಮತ್ತು +","5 ಮತ್ತು 6","× ಮತ್ತು ÷","5 ಮತ್ತು 4"], ans: 3, exp: "15÷5×4+6=18" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "68) 8 + 4 × 2 – 5 = 2", opts: ["× ಮತ್ತು –","+ ಮತ್ತು ×","4 ಮತ್ತು 2","8 ಮತ್ತು 4"], ans: 1, exp: "8+4–2×5=2" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "69) 7 + 9 ÷ 18 × 5 = 17", opts: ["÷ ಮತ್ತು ×","+ ಮತ್ತು ÷","7 ಮತ್ತು 9","9 ಮತ್ತು 18"], ans: 4, exp: "7+18÷9×5=17" },
+    { title: "ಚಿಹ್ನೆಗಳ ಅದಲುಬದಲು", q: "70) 16 × 20 + 5 ÷ 2 = 90", opts: ["× ಮತ್ತು ÷","20 ಮತ್ತು 5","÷ ಮತ್ತು =","16 ಮತ್ತು 20"], ans: 1, exp: "16×5+20÷2=90" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "71) ಚಿತ್ರ: 5,6,2,3 → 16; 5,3,4,6 → 18; 2,9,7,5 → ?", opts: ["25","26","27","23"], ans: 4, exp: "5+6+2+3=16; 5+3+4+6=18; 2+9+7+5=23", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "72) √4×√49=14; √9×√36=18; √16×√25=?", opts: ["28","19","20","24"], ans: 3, exp: "√16×√25=4×5=20", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "73) (8–4)+(9–2)=11; (18–9)+(12–7)=14; (25–17)+(20–13)=?", opts: ["16","15","19","12"], ans: 2, exp: "8+7=15", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "74) (1+2)³=27; (3+1)³=64; (2+4)³=?", opts: ["216","118","224","149"], ans: 1, exp: "6³=216", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "75) 2×1×7×4=56; 2×5×4×8=320; 6×3×4×2=?", opts: ["144","225","289","324"], ans: 1, exp: "6×3×4×2=144", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "76) (17+18)²=1225; (13+14)²=729; (19+4)²=?", opts: ["641","639","542","529"], ans: 4, exp: "23²=529", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "77) ಚಿತ್ರದ ಸಂಖ್ಯೆ ಸಂಬಂಧ", opts: ["714","653","441","280"], ans: 1, exp: "ಮೂಲ ಕೀ: 714", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "78) 9+5+15+92=121; 16+19+24+20=79; 57+7+9+8=?", opts: ["80","81","83","84"], ans: 2, exp: "57+7+9+8=81", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಸಂಖ್ಯೆ", q: "79) 3×3=9; 9×3=27; 7×3=21; 5×3=15; ? = 4", opts: ["10","12","13","15"], ans: 4, exp: "? = 5×3=15", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "80) 2,6,12,20", opts: ["I","II","III","IV"], ans: 3, exp: "n²–n → III" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "81) 10,13,16,19", opts: ["V","IV","III","I"], ans: 1, exp: "n/2+5 → V" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "82) 2,8,14,20", opts: ["I","II","III","V"], ans: 2, exp: "3n–1 → II" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "83) 9,28,65,126", opts: ["I","II","III","IV"], ans: 4, exp: "n³+1 → IV" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "84) 5,9,13,17", opts: ["I","III","IV","V"], ans: 1, exp: "2n+3 → I" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "85) 11,17,23,29", opts: ["II","III","IV","V"], ans: 1, exp: "3n–1 → II" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "86) 11,15,19,23", opts: ["IV","III","II","I"], ans: 4, exp: "2n+3 → I" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "87) 0,2,6,12", opts: ["II","III","IV","V"], ans: 2, exp: "n²–n → III" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "88) 15,20,25,30", opts: ["I","II","III","V"], ans: 4, exp: "n/2+5 → V" },
+    { title: "ಸಂಖ್ಯಾ ಸಮೂಹ", q: "89) 126,217,344,513", opts: ["I","II","IV","V"], ans: 3, exp: "n³+1 → IV" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "90) a _ c _ b _ _ b c _ b a", opts: ["a b a b c","b c a a c","b b a a c","c c a a b"], ans: 2, exp: "b c a a c" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "91) p _ q s p _ _ s p _ q s _ r q s", opts: ["p p q q p","r r q r p","p q p q p","r p r p q"], ans: 2, exp: "prqs / prqs / prqs / prqs" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "92) m n _ _ n o m _ o _ n o _ n o", opts: ["m n m n o","m m n n o","n n m m o","o m n m m"], ans: 4, exp: "mno / mno / mno / mno / mno" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "93) a _ a b b _ a _ a b b _ _ a a", opts: ["a b a b a","a a a b b","b b b a a","a a b a a"], ans: 1, exp: "aaabbb / aaabbb / aaa" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "94) _ f d _ f _ d _ d _ f d", opts: ["d d f f d","d d f f f","d d d f d","d f d f d"], ans: 4, exp: "dfd / dfd / dfd / dfd" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "95) k l _ _ k _ k _ l l _ k k l l", opts: ["l l k l k","l k l k l","k l k l k","k k l k l"], ans: 1, exp: "kll / lkk / kll / lkk / kll" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "96) x _ z x x _ _ z _ _ x x y y y", opts: ["x y z x y","z z x z x","x x y y z","y y y z x"], ans: 4, exp: "x / y / z / xx / yy / zz / xxx / yyy" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "97) o p _ m o _ n _ o p _ m o p n", opts: ["m n p m n","m p n m m","n m m p o","m o p p n"], ans: 1, exp: "mopn / mopn / mopn / mopn" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "98) d c _ a _ c _ a d _ _ a", opts: ["a a b a c","b d b c b","d d d c d","d a d a d"], ans: 2, exp: "dcba / dcba / dcba" },
+    { title: "ಅಕ್ಷರ ಶ್ರೇಣಿ", q: "99) a c _ g _ c _ g a _ _ g a c", opts: ["c e a c c","a a c c e","e a e c e","a a c e g"], ans: 3, exp: "aceg / aceg / aceg / ac" },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "100) 1) A Y C  2) E U G  3) I Q J  4) M M O", opts: ["A Y C","E U G","I Q J","M M O"], ans: 3, exp: "I Q J ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "101) 1) B E H  2) D G J  3) K N Q  4) R T W", opts: ["B E H","D G J","K N Q","R T W"], ans: 4, exp: "R T W ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "102) 1) A O D  2) C Q E  3) F T H  4) I W K", opts: ["A O D","C Q E","F T H","I W K"], ans: 1, exp: "A O D ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "103) 1) K 12 M  2) G 9 I  3) P 17 R  4) E 6 G", opts: ["K 12 M","G 9 I","P 17 R","E 6 G"], ans: 2, exp: "G 9 I ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "104) 1) H J M Q  2) P R T X  3) M O R V  4) I K N R", opts: ["H J M Q","P R T X","M O R V","I K N R"], ans: 2, exp: "P R T X ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "105) 1) L M O Q  2) K M O Q  3) E G I K  4) Q S U W", opts: ["L M O Q","K M O Q","E G I K","Q S U W"], ans: 1, exp: "L M O Q ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "106) 1) D 10 F  2) G 20 M  3) K 22 M  4) P 36 T", opts: ["D 10 F","G 20 M","K 22 M","P 36 T"], ans: 3, exp: "K 22 M ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "107) 1) D C A  2) N M K  3) S R P  4) I H G", opts: ["D C A","N M K","S R P","I H G"], ans: 4, exp: "I H G ವಿಭಿನ್ನ." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "108) 1) Q P R T S  2) F E G I H  3) M L N P Q  4) U T V W X", opts: ["Q P R T S","F E G I H","M L N P Q","U T V W X"], ans: 4, exp: "U T V W X ವಿಭಿನ್ನ (ಮೂಲ ಕೀ)." },
+    { title: "ವಿಭಿನ್ನ ಅಕ್ಷರ", q: "109) 1) C G D I E  2) P T Q V R  3) M P N R O  4) U Y V A W", opts: ["C G D I E","P T Q V R","M P N R O","U Y V A W"], ans: 3, exp: "M P N R O ವಿಭಿನ್ನ." },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "110) MAN : ODR :: BUS : ?", opts: ["DXW","DWW","CXW","EXW"], ans: 1, exp: "B+2=D, U+3=X, S+4=W → DXW" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "111) RUN : LSP :: PET : ?", opts: ["RCM","NCR","RDM","RCN"], ans: 2, exp: "ಮೂಲ ಕೀ: NCR" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "112) GCM : FBL :: RLT : ?", opts: ["QKP","QKS","QNK","TKN"], ans: 2, exp: "R–1=Q, L–1=K, T–1=S → QKS" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "113) SONG : TQQK :: DANCE : ?", opts: ["ECCGK","ECQQJ","RGGKJ","ECQGJ"], ans: 4, exp: "D+1=E, A+2=C, N+3=Q, C+4=G, E+5=J → ECQGJ" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "114) FILM : URON :: CAKE : ?", opts: ["XKMQ","XZPS","XZPV","XZKP"], ans: 2, exp: "C→X, A→Z, K→P, E→V → XZPV" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "115) BOOK : ELRH :: TEXT : ?", opts: ["WBZQ","WBAQ","VBZQ","UCAQ"], ans: 1, exp: "T+3=W, E–3=B, X+3=A, T–3=Q → WBAQ? ಮೂಲ ಕೀ: WBZQ" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "116) MARS : ? :: STAR : QWWW", opts: ["KDNX","KDMV","KDMV","KENX"], ans: 3, exp: "ಮೂಲ ಕೀ: KDMV" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "117) BOLD : IPRD :: PACK : ?", opts: ["PGRD","PGDR","PRDB","WBQD"], ans: 3, exp: "ಮೂಲ ಕೀ: PRDB" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "118) A3M5E : D6P8H :: K6N2T : ?", opts: ["N8Q4W","M9Q4W","M8P5W","N9Q5W"], ans: 1, exp: "ಮೂಲ ಕೀ: N8Q4W" },
+    { title: "ಸಾಮ್ಯತೆ ಅಕ್ಷರ", q: "119) ACTION : DZWFRK :: SEARCH : ?", opts: ["VBDMEF","VADOEF","VBDOFE","VBDOEF"], ans: 4, exp: "S+3=V, E–3=B, A+3=D, R–3=O, C+3=F, H–3=E → VBDOEF" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "120) A C E / M O Q / T V ?", opts: ["W","Z","Y","X"], ans: 4, exp: "T+2=V, V+2=X → X" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "121) G K O / M Q U / H L ?", opts: ["K","H","P","Q"], ans: 3, exp: "H+4=L, L+4=P → P" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "122) S V Z / J M ? / C F J", opts: ["Q","R","G","H"], ans: 1, exp: "J+3=M, M+4=Q → Q" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "123) L X W / I U T / E Q ?", opts: ["V","P","N","M"], ans: 2, exp: "W–3=T, T–4=P → P" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "124) P N D / S Q G / N ? B", opts: ["O","N","M","L"], ans: 4, exp: "D+3=G, G–5=B → L" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "125) 4 6 9 / 3 7 2 / G M ?", opts: ["N","L","K","J"], ans: 3, exp: "9+2=11=K → K" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "126) 3 6 4 / 7 2 5 / U L ?", opts: ["L","P","T","N"], ans: 3, exp: "4×5=20=T → T" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "127) F H 14 / K J 21 / D I ?", opts: ["12","13","14","15"], ans: 2, exp: "D(4)+I(9)=13 → 13" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "128) C R F / F L B / D ? F", opts: ["X","W","V","U"], ans: 1, exp: "D(4)×F(6)=24=X → X" },
+    { title: "ಮಾತೃಕೆ ಅಕ್ಷರ", q: "129) L T O / G D H / E P ?", opts: ["E","G","H","L"], ans: 2, exp: "O(15)–H(8)=7=G → G" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "130) DHARAWADA → CGZQYZCZ. MANDYA → ?", opts: ["ZMCVAZ","LZMDYK","LZMFNY","LZMCXZ"], ans: 4, exp: "M→L, A→Z, N→M, D→C, Y→X, A→Z → LZMCXZ" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "131) CALL → ECNN. MAIL → ?", opts: ["OCKN","OCMZ","OCKY","PCKI"], ans: 1, exp: "M+2=O, A+2=C, I+2=K, L+2=N → OCKN" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "132) COVER → 3,15,22,5,18. RABBIT → ?", opts: ["18,1,2,2,8,15","18,1,3,3,7,16","18,1,2,2,9,20","20,1,4,15,3,20"], ans: 3, exp: "R=18,A=1,B=2,B=2,I=9,T=20 → 18,1,2,2,9,20" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "133) PAIR → QCLV. ALONE → ?", opts: ["BNRPK","BNRJH","BNRRJ","KLOPN"], ans: 3, exp: "A+1=B, L+2=N, O+3=R, N+4=R, E+5=J → BNRRJ" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "134) MAP → 30. CAT → ?", opts: ["10","12","14","24"], ans: 4, exp: "C(3)+A(1)+T(20)=24" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "135) MATHS → NCWLX. PRISM → ?", opts: ["QTMWR","QTLWR","PRLWS","PRMWS"], ans: 2, exp: "P+1=Q, R+2=T, I+3=L, S+4=W, M+5=R → QTLWR" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "136) SYSTEM → SYSMET. MONKEY → ?", opts: ["NOMYEK","NOMKEY","NOMEKY","KEYNOM"], ans: 1, exp: "MONKEY → NOMYEK" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "137) MANGO → NZMTL. ORANGE → ?", opts: ["LIZTMV","LIZNTV","LIZMTV","KIZMTV"], ans: 3, exp: "ORANGE → LIZMTV" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "138) PRIZE → 7,9,9,8,5. THANK → ?", opts: ["2,8,1,6,3","20,8,2,6,2","2,9,2,5,2","2,8,1,5,2"], ans: 4, exp: "T=20→2, H=8→8, A=1→1, N=14→5, K=11→2 → 2,8,1,5,2" },
+    { title: "ಸಂಕೇತ ಅಕ್ಷರ", q: "139) MANGO → UBRXO. APPLE → ?", opts: ["KGTMC","LGTNC","KGTNC","KGSND"], ans: 1, exp: "APPLE → KGTMC" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "140) ಟೇಬಲ್‌ಗಳು, ಕುರ್ಚಿಗಳು, ಪೀಠೋಪಕರಣಗಳು", opts: ["E","D","C","B"], ans: 4, exp: "ಚಿತ್ರ B.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "141) ವೈದ್ಯರು, ಎಂಜಿನಿಯರ್‌ಗಳು, ವಕೀಲರು", opts: ["A","D","B","F"], ans: 2, exp: "ಚಿತ್ರ D.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "142) ಪ್ರೊಫೆಸರ್‌ಗಳು, ಲೇಖಕರು, ಹುಲಿಗಳು", opts: ["C","E","B","D"], ans: 1, exp: "ಚಿತ್ರ C.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "143) ಪುರುಷರು, ತಂದೆಗಳು, ಸಹೋದರರು", opts: ["D","B","E","A"], ans: 4, exp: "ಚಿತ್ರ A.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "144) ಮಹಿಳೆಯರು, ತಾಯಂದಿರು, ಶಿಕ್ಷಕರು", opts: ["B","C","F","A"], ans: 3, exp: "ಚಿತ್ರ F.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "145) ಮಹಿಳೆಯರು, ತಾಯಂದಿರು, ಸಹೋದರಿಯರು", opts: ["A","B","C","F"], ans: 1, exp: "ಚಿತ್ರ A.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "146) ವಿದ್ಯಾರ್ಥಿಗಳು, ಗಾಯಕರು, ಆಟಗಾರರು", opts: ["B","C","D","E"], ans: 2, exp: "ಚಿತ್ರ C.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "147) ಜಿಲ್ಲೆಗಳು, ತಾಲ್ಲೂಕುಗಳು, ಹೋಬಳಿಗಳು", opts: ["A","C","D","B"], ans: 1, exp: "ಚಿತ್ರ A.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "148) ತಾಮ್ರ, ಚಿನ್ನ, ಲೋಹಗಳು", opts: ["F","D","C","B"], ans: 4, exp: "ಚಿತ್ರ B.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "149) ಹುಡುಗರು, ಹುಡುಗಿಯರು, ಆಟಗಾರರು", opts: ["B","A","F","D"], ans: 3, exp: "ಚಿತ್ರ F.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "150) ವಜ್ರಾಕೃತಿ, ತ್ರಿಭುಜಗಳು, ಚತುರ್ಭುಜಗಳು", opts: ["A","E","F","B"], ans: 2, exp: "ಚಿತ್ರ E.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "151) ಜಿಂಕೆ, ಮೊಲ, ಸಸ್ತನಿ", opts: ["B","C","D","F"], ans: 1, exp: "ಚಿತ್ರ B.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "152) ಮನುಷ್ಯರು, ಶಿಕ್ಷಕರು, ಪುರುಷರು", opts: ["B","A","F","D"], ans: 4, exp: "ಚಿತ್ರ D.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "153) ಕಾರ್ಬನ್, ಸೋಡಿಯಂ, ಅಲೋಹಗಳು", opts: ["A","C","B","E"], ans: 4, exp: "ಚಿತ್ರ E.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "154) ಗಿಳಿಗಳು, ಪಕ್ಷಿಗಳು, ಪ್ರಾಣಿಗಳು", opts: ["F","D","A","E"], ans: 3, exp: "ಚಿತ್ರ A.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವೆನ್ ಚಿತ್ರ", q: "155) ಅಕ್ಷರಸ್ಥರು, ಪುರುಷರು, ನೌಕರರು", opts: ["D","C","B","F"], ans: 2, exp: "ಚಿತ್ರ C.", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಲೋಚನಾತ್ಮಕ", q: "156) ಶ್ರೇಣಿ: 8 5 1 7 6 3 4 8 5 9 7 4 1 9 6. ವ್ಯತ್ಯಾಸ 3 ಇರುವ ಎಷ್ಟು ಜೋಡಿಗಳಿವೆ?", opts: ["ಮೂರು","ನಾಲ್ಕು","ಐದು","ಆರು"], ans: 4, exp: "ಆರು ಜೋಡಿಗಳು." },
+    { title: "ಆಲೋಚನಾತ್ಮಕ", q: "157) 2 ರ ನಂತರ 3 ಮತ್ತು ಮೊದಲು 5 ಎಷ್ಟು ಬಾರಿ?", opts: ["ಮೂರು","ಐದು","ಆರು","ನಾಲ್ಕು"], ans: 4, exp: "ನಾಲ್ಕು." },
+    { title: "ಆಲೋಚನಾತ್ಮಕ", q: "158) 40 ಹುಡುಗರು. ದಿನೇಶ ಬಲದಿಂದ 14ನೇ, ಮೋಹನ ಎಡದಿಂದ 18ನೇ. ನಡುವೆ?", opts: ["6","8","7","9"], ans: 2, exp: "8 ಹುಡುಗರು." },
+    { title: "ಆಲೋಚನಾತ್ಮಕ", q: "159) ಅಮೋಘ 16 ಕಿಮೀ ಉತ್ತರ, 10 ಕಿಮೀ ದಕ್ಷಿಣ, 4 ಕಿಮೀ ಪಶ್ಚಿಮ, 6 ಕಿಮೀ ದಕ್ಷಿಣ. ದೂರ?", opts: ["8 ಕಿಮೀ","6 ಕಿಮೀ","4 ಕಿಮೀ","3 ಕಿಮೀ"], ans: 3, exp: "4 ಕಿಮೀ." },
+    { title: "ಆಲೋಚನಾತ್ಮಕ", q: "160) ಸಚಿನ್ ಅನಿಲ್‌ಗಿಂತ 4 ವರ್ಷ ದೊಡ್ಡವನು. ಮೊತ್ತ 20. ಸಚಿನ್ ವಯಸ್ಸು?", opts: ["14 ವರ್ಷ","12 ವರ್ಷ","16 ವರ್ಷ","18 ವರ್ಷ"], ans: 2, exp: "12 ವರ್ಷ." },
+    { title: "ಆಲೋಚನಾತ್ಮಕ", q: "161) ಅನಘ್ಯಾ ಜನವರಿ 28. ಹರ್ಷಿಕಾ 7 ದಿನ ಚಿಕ್ಕವಳು. ಗಣರಾಜ್ಯ ದಿನ ಮಂಗಳವಾರ. ಹರ್ಷಿಕಾ ಜನ್ಮದಿನ?", opts: ["ಭಾನುವಾರ","ಮಂಗಳವಾರ","ಗುರುವಾರ","ಶನಿವಾರ"], ans: 3, exp: "ಗುರುವಾರ." },
+    { title: "ಛೇದಿಸುವ ಆಕೃತಿ", q: "162) ವಿದ್ಯಾವಂತ ನಿರುದ್ಯೋಗಿ ಪುರುಷರು ಮಾತ್ರ", opts: ["C","A","F","D"], ans: 3, exp: "F", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಛೇದಿಸುವ ಆಕೃತಿ", q: "163) ಹಳ್ಳಿಯಲ್ಲಿರುವ ವಿದ್ಯಾವಂತ ನಿರುದ್ಯೋಗಿ ಪುರುಷರು", opts: ["E","F","C","A"], ans: 1, exp: "E", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಛೇದಿಸುವ ಆಕೃತಿ", q: "164) ಹಳ್ಳಿಯಲ್ಲಿರುವ ವಿದ್ಯಾವಂತ ಪುರುಷರು ಮಾತ್ರ", opts: ["C","B","A","D"], ans: 4, exp: "D", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಛೇದಿಸುವ ಆಕೃತಿ", q: "165) ಹಳ್ಳಿಯಲ್ಲಿರುವ ಪುರುಷರು ಮಾತ್ರ", opts: ["C","A","D","B"], ans: 2, exp: "A", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಛೇದಿಸುವ ಆಕೃತಿ", q: "166) C ಯಾವುದನ್ನು ಪ್ರತಿನಿಧಿಸುತ್ತದೆ?", opts: ["ಉದ್ಯೋಗಿ ಪುರುಷರು","ಹಳ್ಳಿಯ ವಿದ್ಯಾವಂತ ಪುರುಷರು","ಹಳ್ಳಿಯ ಪುರುಷರು","ನಿರುದ್ಯೋಗಿ ಪುರುಷರು"], ans: 4, exp: "ನಿರುದ್ಯೋಗಿ ಪುರುಷರು", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "167) ಎಷ್ಟು ತ್ರಿಭುಜಗಳಿವೆ?", opts: ["10","12","14","16"], ans: 4, exp: "16", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "168) ಎಷ್ಟು ತ್ರಿಭುಜಗಳಿವೆ?", opts: ["12","10","9","8"], ans: 1, exp: "12", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "169) ಎಷ್ಟು ಚೌಕಗಳಿವೆ?", opts: ["12","14","13","15"], ans: 2, exp: "14", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "170) ಎಷ್ಟು ಚೌಕಗಳಿವೆ?", opts: ["8","9","10","12"], ans: 2, exp: "9", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "171) ಎಷ್ಟು ಆಯತಗಳಿವೆ?", opts: ["7","8","9","10"], ans: 3, exp: "9", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "172) ಎಷ್ಟು ಆಯತಗಳಿವೆ?", opts: ["9","10","12","13"], ans: 3, exp: "12", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "173) ಎಷ್ಟು ಸಮಾಂತರ ಚತುರ್ಭುಜಗಳಿವೆ?", opts: ["14","16","18","20"], ans: 2, exp: "16", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "174) ಎಷ್ಟು ಸಮಾಂತರ ಚತುರ್ಭುಜಗಳಿವೆ?", opts: ["12","14","16","18"], ans: 1, exp: "12", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "175) ಎಷ್ಟು ತ್ರಾಪಿಜ್ಯಗಳಿವೆ?", opts: ["2","4","5","6"], ans: 4, exp: "6", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "176) ಎಷ್ಟು ತ್ರಾಪಿಜ್ಯಗಳಿವೆ?", opts: ["6","8","10","12"], ans: 3, exp: "10", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "177) ಎಷ್ಟು ಅರ್ಧವೃತ್ತಗಳಿವೆ?", opts: ["8","10","12","16"], ans: 4, exp: "16", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಜ್ಯಾಮಿತೀಯ ಆಕೃತಿ", q: "178) ಎಷ್ಟು ಅರ್ಧವೃತ್ತಗಳಿವೆ?", opts: ["10","12","14","16"], ans: 2, exp: "12", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಂಕೇತ/ಪ್ರತಿಸಂಕೇತ", q: "179) MALE", opts: ["fepj","shpe","ehpv","ehpg"], ans: 4, exp: "e h p g" },
+    { title: "ಸಂಕೇತ/ಪ್ರತಿಸಂಕೇತ", q: "180) NAIL", opts: ["vhfp","zhfj","hvxk","vfez"], ans: 1, exp: "v h f p" },
+    { title: "ಸಂಕೇತ/ಪ್ರತಿಸಂಕೇತ", q: "181) RAIN", opts: ["j h m e","j h f v","f j v m","e g f s"], ans: 2, exp: "j h f v" },
+    { title: "ಸಂಕೇತ/ಪ್ರತಿಸಂಕೇತ", q: "182) MORE", opts: ["ezvh","pzje","fmpv","ezjg"], ans: 4, exp: "e z j g" },
+    { title: "ಸಂಕೇತ/ಪ್ರತಿಸಂಕೇತ", q: "183) m h j g", opts: ["RARE","CARE","LINE","RAMA"], ans: 2, exp: "CARE" },
+    { title: "ಸಂಕೇತ/ಪ್ರತಿಸಂಕೇತ", q: "184) p f e g", opts: ["NILE","CALM","LIME","HORN"], ans: 3, exp: "LIME" },
+    { title: "ಆಕೃತಿ ಪೂರ್ಣ", q: "185) ಬಿಟ್ಟುಹೋಗಿರುವ ಭಾಗ?", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಪೂರ್ಣ", q: "186) ಬಿಟ್ಟುಹೋಗಿರುವ ಭಾಗ?", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಪೂರ್ಣ", q: "187) ಬಿಟ್ಟುಹೋಗಿರುವ ಭಾಗ?", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಪೂರ್ಣ", q: "188) ಬಿಟ್ಟುಹೋಗಿರುವ ಭಾಗ?", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಶ್ರೇಣಿ", q: "189) ಶ್ರೇಣಿ: ತ್ರಿಭುಜ, ವಜ್ರಾಕೃತಿ, ಪಂಚಭುಜ, ಷಡ್ಭುಜ, ?", opts: ["1","2","3","4"], ans: 3, exp: "ಸಪ್ತಭುಜ (7 ಬಾಹು)", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಶ್ರೇಣಿ", q: "190) ಆಯತಗಳ ಶ್ರೇಣಿ", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಶ್ರೇಣಿ", q: "191) ವೃತ್ತಗಳ ಶ್ರೇಣಿ", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಆಕೃತಿ ಶ್ರೇಣಿ", q: "192) ಚೌಕಗಳ ಶ್ರೇಣಿ", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವಿಭಿನ್ನ ಆಕೃತಿ", q: "193) ವಿಭಿನ್ನ ಆಕೃತಿ?", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವಿಭಿನ್ನ ಆಕೃತಿ", q: "194) ವಿಭಿನ್ನ ಆಕೃತಿ?", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ವಿಭಿನ್ನ ಆಕೃತಿ", q: "195) ವಿಭಿನ್ನ ಆಕೃತಿ?", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಾಮ್ಯತೆ ಆಕೃತಿ", q: "196) ತ್ರಿಭುಜ ಮತ್ತು ನಕ್ಷತ್ರ : ಚೌಕ ಮತ್ತು ನಕ್ಷತ್ರ :: ಪಂಚಭುಜ ಮತ್ತು ನಕ್ಷತ್ರ : ?", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಾಮ್ಯತೆ ಆಕೃತಿ", q: "197) ಚೌಕ ಮತ್ತು ತ್ರಿಭುಜ : ತ್ರಿಭುಜ ಮತ್ತು ಚೌಕ :: ಷಡ್ಭುಜ ಮತ್ತು ಪಂಚಭುಜ : ?", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಾಮ್ಯತೆ ಆಕೃತಿ", q: "198) ವಜ್ರಾಕೃತಿ : 5-ನಕ್ಷತ್ರ :: ತ್ರಿಭುಜ : ?", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಾಮ್ಯತೆ ಆಕೃತಿ", q: "199) ವೃತ್ತ ಮತ್ತು ತ್ರಿಭುಜ : ವೃತ್ತ ಮತ್ತು ವಿಭಾಗಿಸಿದ ತ್ರಿಭುಜ :: ವೃತ್ತ ಮತ್ತು ಪಂಚಭುಜ : ?", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಸಾಮ್ಯತೆ ಆಕೃತಿ", q: "200) ದೀರ್ಘವೃತ್ತ ಮತ್ತು ತ್ರಿಭುಜ : ದೀರ್ಘವೃತ್ತ ಮತ್ತು ಮೇಲ್ಭಾಗ ಛಾಯೆ :: ದೀರ್ಘವೃತ್ತ ಮತ್ತು ವಜ್ರಾಕೃತಿ : ?", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಒಂದರ ಮೇಲೊಂದಿಡು", q: "201) a ಮತ್ತು b ಅನ್ನು ಒಂದರ ಮೇಲೊಂದಿಡಿ", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಒಂದರ ಮೇಲೊಂದಿಡು", q: "202) a ಮತ್ತು b ಅನ್ನು ಒಂದರ ಮೇಲೊಂದಿಡಿ", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಒಂದರ ಮೇಲೊಂದಿಡು", q: "203) a ಮತ್ತು b ಅನ್ನು ಒಂದರ ಮೇಲೊಂದಿಡಿ", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಕಾಗದ ಮಡಿಸಿ", q: "204) ಕಾಗದ ಮಡಿಸಿ ರಂಧ್ರ", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಕಾಗದ ಮಡಿಸಿ", q: "205) ಕಾಗದ ಮಡಿಸಿ ರಂಧ್ರ", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಕಾಗದ ಮಡಿಸಿ", q: "206) ಕಾಗದ ಮಡಿಸಿ ರಂಧ್ರ", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಕಾಗದ ಮಡಿಸಿ", q: "207) ಕಾಗದ ಮಡಿಸಿ ರಂಧ್ರ", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಕಾಗದ ಮಡಿಸಿ", q: "208) ಕಾಗದ ಮಡಿಸಿ ರಂಧ್ರ", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದಾಳ ಮತ್ತು ಘನ", q: "209) 'a' ಗೆ ವಿರುದ್ಧ ಮುಖ?", opts: ["c","d","e","f"], ans: 1, exp: "c", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದಾಳ ಮತ್ತು ಘನ", q: "210) '1' ಗೆ ವಿರುದ್ಧ ಮುಖ?", opts: ["4","3","4","6"], ans: 2, exp: "3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದಾಳ ಮತ್ತು ಘನ", q: "211) ವಿರುದ್ಧ ಮುಖಗಳ ಜೋಡಿ?", opts: ["+, < ; ×, > ; -, ÷",">, < ; ×, +; -, ÷","+, < ; ×, -; ÷, >","+, > ; ×, < ; -, ÷"], ans: 4, exp: "+, > ; ×, < ; -, ÷", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದಾಳ ಮತ್ತು ಘನ", q: "212) ಘನದ ವಿರುದ್ಧ ಮುಖಗಳು", opts: ["a,b ; c,e ; d,f","a,e ; b,d ; c,f","a,d ; c,f ; b,e","a,e ; d,f ; b,c"], ans: 4, exp: "a,e ; d,f ; b,c", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದಾಳ ಮತ್ತು ಘನ", q: "213) ವಿರುದ್ಧ ಮುಖಗಳು", opts: ["X,> ; =, + ; %,<","X,%, ; =, + ; >,<","X,> ; =, < ; %,+","X,< ; =, + ; %,>"], ans: 3, exp: "X,> ; =, < ; %,+", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದಾಳ ಮತ್ತು ಘನ", q: "214) ವಿರುದ್ಧ ಮುಖಗಳು", opts: ["1,5 ; 2,6 ; 3,4","3,4 ; 5,6 ; 1,2","4,5 ; 1,2 ; 3,6","4,5 ; 1,3 ; 2,6"], ans: 4, exp: "4,5 ; 1,3 ; 2,6", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "215) ತ್ರಿಭುಜ ಮತ್ತು ಚೌಕದ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "216) ಪಂಚಭುಜ ಮತ್ತು ಸಂಕೇತಗಳ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "217) GOVIL ನ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "218) ವೃತ್ತ ಮತ್ತು ಮುಖದ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "219) ವಕ್ರ ಆಕೃತಿಯ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "220) MATRIX ನ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", q: "221) PUNCH ನ ದರ್ಪಣ ಪ್ರತಿಬಿಂಬ", opts: ["1","2","3","4"], ans: 4, exp: "ಆಯ್ಕೆ 4", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಅಡಗಿರುವ ಆಕೃತಿ", q: "222) ಅಡಗಿರುವ ಆಕೃತಿ (ಚೌಕ ಮತ್ತು X)", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಅಡಗಿರುವ ಆಕೃತಿ", q: "223) ಅಡಗಿರುವ ಆಕೃತಿ (ತ್ರಿಭುಜ ಮತ್ತು ವೃತ್ತ)", opts: ["1","2","3","4"], ans: 3, exp: "ಆಯ್ಕೆ 3", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಅಡಗಿರುವ ಆಕೃತಿ", q: "224) ಅಡಗಿರುವ ಆಕೃತಿ (ವಜ್ರಾಕೃತಿ ಮತ್ತು ಶಿಲುಬೆ)", opts: ["1","2","3","4"], ans: 2, exp: "ಆಯ್ಕೆ 2", img: "https://i.imgur.com/8Q6Z9QO.png" },
+    { title: "ಅಡಗಿರುವ ಆಕೃತಿ", q: "225) ಅಡಗಿರುವ ಆಕೃತಿ (ಪಂಚಭುಜ ಮತ್ತು ಆಕೃತಿ)", opts: ["1","2","3","4"], ans: 1, exp: "ಆಯ್ಕೆ 1", img: "https://i.imgur.com/8Q6Z9QO.png" }
+  ];
+
+  // =============================================================
+  // 2. ಸ್ಥಿತಿ ಮತ್ತು ಅಂಶಗಳು
+  // =============================================================
+  const totalQuestions = questions.length;
+  let currentIndex = 0;
+  const userAnswers = new Array(totalQuestions).fill(null);
+  let quizFinished = false;
+  let currentFilter = 'all';
+
+  const quizArea = document.getElementById('quizArea');
+  const progressFill = document.getElementById('progressFill');
+  const progressText = document.getElementById('progressText');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
+  const submitBtn = document.getElementById('submitBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const scorePanel = document.getElementById('scorePanel');
+  const scoreValue = document.getElementById('scoreValue');
+  const scoreMessage = document.getElementById('scoreMessage');
+  const scoreName = document.getElementById('scoreName');
+  const reviewSection = document.getElementById('reviewSection');
+  const reviewList = document.getElementById('reviewList');
+  const studentNameInput = document.getElementById('studentName');
+
+  // =============================================================
+  // 3. ಪ್ರಸ್ತುತ ಪ್ರಶ್ನೆಯನ್ನು ರೆಂಡರ್ ಮಾಡು
+  // =============================================================
+  function renderCurrentQuestion() {
+    if (quizFinished) return;
+
+    const idx = currentIndex;
+    const q = questions[idx];
+    const selected = userAnswers[idx];
+
+    let html = `<div class="question-card">`;
+    html += `<div class="q-num">ಪ್ರಶ್ನೆ ${idx + 1} / ${totalQuestions}</div>`;
+    html += `<div class="q-title">${q.title}</div>`;
+    html += `<div class="q-text">${q.q}</div>`;
+    html += `<div class="options">`;
+
+    q.opts.forEach((opt, optIdx) => {
+      const letter = String.fromCharCode(65 + optIdx);
+      const isSelected = selected === optIdx;
+      html += `<label class="option ${isSelected ? 'selected' : ''}" data-optidx="${optIdx}">
+        <input type="radio" name="q${idx}" value="${optIdx}" ${isSelected ? 'checked' : ''}>
+        <span>${letter}) ${opt}</span>
+      </label>`;
+    });
+
+    html += `</div>`;
+    // ವಿವರಣೆ + ಚಿತ್ರ (ಆಯ್ಕೆ ಮಾಡಿದಾಗ ತೋರಿಸಲಾಗುತ್ತದೆ)
+    html += `<div class="explain hidden" id="exp-${idx}"><strong>ವಿವರಣೆ:</strong> ${q.exp}</div>`;
+    if (q.img) {
+      html += `<div class="related-image hidden" id="img-${idx}">
+        <img src="${q.img}" alt="ಸಂಬಂಧಿತ ಚಿತ್ರ" loading="lazy">
+        <div class="img-label">ಸಂಬಂಧಿತ ಚಿತ್ರ</div>
+      </div>`;
+    }
+    html += `</div>`;
+
+    quizArea.innerHTML = html;
+
+    // ಈವೆಂಟ್ ಲಿಸನರ್‌ಗಳನ್ನು ಲಗತ್ತಿಸಿ
+    document.querySelectorAll('.option input[type="radio"]').forEach(radio => {
+      radio.addEventListener('change', (e) => {
+        const optIdx = parseInt(e.target.value);
+        userAnswers[currentIndex] = optIdx;
+        // ವರ್ಗಗಳನ್ನು ನವೀಕರಿಸಿ
+        document.querySelectorAll('.option').forEach(opt => opt.classList.remove('selected'));
+        e.target.closest('.option').classList.add('selected');
+
+        // ವಿವರಣೆ ಮತ್ತು ಚಿತ್ರ ತೋರಿಸಿ
+        const expEl = document.getElementById(`exp-${currentIndex}`);
+        if (expEl) expEl.classList.remove('hidden');
+        const imgEl = document.getElementById(`img-${currentIndex}`);
+        if (imgEl) imgEl.classList.remove('hidden');
+
+        // ಮುಂದೆ ಬಟನ್ ಸಕ್ರಿಯಗೊಳಿಸಿ
+        updateButtons();
+      });
+    });
+
+    // ಮರು-ರೆಂಡರ್‌ನಲ್ಲಿ ವಿವರಣೆ ಮತ್ತು ಚಿತ್ರ ಮರೆಮಾಡಿ (ಆಯ್ಕೆ ಇದ್ದರೆ ತೋರಿಸಿ)
+    const expEl = document.getElementById(`exp-${idx}`);
+    if (expEl) {
+      if (selected !== null) expEl.classList.remove('hidden');
+      else expEl.classList.add('hidden');
+    }
+    const imgEl = document.getElementById(`img-${idx}`);
+    if (imgEl) {
+      if (selected !== null) imgEl.classList.remove('hidden');
+      else imgEl.classList.add('hidden');
+    }
+
+    updateProgress();
+    updateButtons();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // =============================================================
+  // 4. ಪ್ರಗತಿ ಮತ್ತು ಬಟನ್‌ಗಳನ್ನು ನವೀಕರಿಸಿ
+  // =============================================================
+  function updateProgress() {
+    const answered = userAnswers.filter(a => a !== null).length;
+    const pct = Math.round((answered / totalQuestions) * 100);
+    progressFill.style.width = pct + '%';
+    progressText.textContent = `${answered} / ${totalQuestions}`;
+  }
+
+  function updateButtons() {
+    prevBtn.disabled = currentIndex === 0;
+    // ಕೊನೆಯ ಪ್ರಶ್ನೆಯಲ್ಲಿ "ಮುಂದೆ" ಬದಲಿಗೆ "ಸಲ್ಲಿಸಿ" ತೋರಿಸಿ
+    if (currentIndex === totalQuestions - 1) {
+      nextBtn.classList.add('hidden');
+      submitBtn.classList.remove('hidden');
+    } else {
+      nextBtn.classList.remove('hidden');
+      submitBtn.classList.add('hidden');
+    }
+  }
+
+  // =============================================================
+  // 5. ಮುಂದೆ / ಹಿಂದೆ
+  // =============================================================
+  function goNext() {
+    if (currentIndex < totalQuestions - 1) {
+      currentIndex++;
+      renderCurrentQuestion();
+    }
+  }
+
+  function goPrev() {
+    if (currentIndex > 0) {
+      currentIndex--;
+      renderCurrentQuestion();
+    }
+  }
+
+  // =============================================================
+  // 6. ಸಲ್ಲಿಸಿ ಮತ್ತು ಅಂಕ ನೀಡಿ + ವಿಮರ್ಶೆ ರೆಂಡರ್
+  // =============================================================
+  function submitQuiz() {
+    quizFinished = true;
+
+    // ಹೆಸರು
+    const name = studentNameInput.value.trim() || 'ವಿದ್ಯಾರ್ಥಿ';
+    scoreName.textContent = name;
+
+    // ಎಣಿಸಿ
+    let correct = 0;
+    questions.forEach((q, idx) => {
+      const selected = userAnswers[idx];
+      if (selected !== null && selected === q.ans) correct++;
+    });
+
+    const pct = Math.round((correct / totalQuestions) * 100);
+    scoreValue.textContent = correct;
+
+    let msg = '';
+    if (pct >= 90) msg = '🏆 ಅದ್ಭುತ! ನೀವು ಜಿಮ್ಯಾಟ್ ಚಾಂಪಿಯನ್!';
+    else if (pct >= 75) msg = '🌟 ಶ್ರೇಷ್ಠ! ನಿಮ್ಮ ಶ್ರಮ ಮುಂದುವರಿಸಿ.';
+    else if (pct >= 60) msg = '👍 ಒಳ್ಳೆಯದು! ಸ್ವಲ್ಪ ಹೆಚ್ಚು ಅಭ್ಯಾಸದಿಂದ ಉತ್ತಮ ಫಲಿತಾಂಶ.';
+    else if (pct >= 40) msg = '📘 ಕೆಟ್ಟದಲ್ಲ, ವಿವರಣೆಗಳನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.';
+    else msg = '💪 ಅಭ್ಯಾಸ ಮುಂದುವರಿಸಿ! ನೀವು ಸುಧಾರಿಸಬಹುದು.';
+    scoreMessage.textContent = `${msg} (${pct}%)`;
+    scorePanel.classList.remove('hidden');
+
+    // ವಿಮರ್ಶೆ ವಿಭಾಗ
+    renderReview();
+    reviewSection.classList.remove('hidden');
+
+    // ಸ್ಕೋರ್ ಪ್ಯಾನೆಲ್‌ಗೆ ಸ್ಕ್ರಾಲ್ ಮಾಡಿ
+    scorePanel.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  // =============================================================
+  // 7. ಫಲಿತಾಂಶ ವಿಮರ್ಶೆ ರೆಂಡರ್
+  // =============================================================
+  function renderReview() {
+    const filter = currentFilter;
+    let html = '';
+
+    questions.forEach((q, idx) => {
+      const selected = userAnswers[idx];
+      const isCorrect = selected !== null && selected === q.ans;
+      const isUnanswered = selected === null;
+
+      // ಫಿಲ್ಟರ್ ಅನ್ವಯಿಸಿ
+      if (filter === 'wrong' && (isCorrect || isUnanswered)) return;
+      if (filter === 'correct' && !isCorrect) return;
+      if (filter === 'unanswered' && !isUnanswered) return;
+
+      const cardClass = isCorrect ? 'correct' : (isUnanswered ? 'unanswered' : 'wrong');
+      const statusText = isCorrect ? '✅ ಸರಿ' : (isUnanswered ? '⚠️ ಉತ್ತರಿಸಿಲ್ಲ' : '❌ ತಪ್ಪು');
+
+      html += `<div class="review-card ${cardClass}">`;
+      html += `<div class="r-q-num">ಪ್ರಶ್ನೆ ${idx + 1} · ${statusText}</div>`;
+      html += `<div class="r-q-title">${q.title}</div>`;
+      html += `<div class="r-q-text">${q.q}</div>`;
+      html += `<div class="review-options">`;
+
+      q.opts.forEach((opt, optIdx) => {
+        const letter = String.fromCharCode(65 + optIdx);
+        const isAnswer = optIdx === q.ans;
+        const isUserChoice = selected === optIdx;
+
+        let optClass = '';
+        if (isAnswer) optClass = 'correct-option';
+        else if (isUserChoice && !isAnswer) optClass = 'wrong-option';
+
+        let tag = '';
+        if (isAnswer) tag = '<span class="tag tag-correct">ಸರಿ ಉತ್ತರ</span>';
+        else if (isUserChoice) tag = '<span class="tag tag-wrong">ನಿಮ್ಮ ಉತ್ತರ</span>';
+
+        html += `<div class="review-option ${optClass}">
+          <span>${letter}) ${opt}</span>
+          ${tag}
+        </div>`;
+      });
+
+      html += `</div>`;
+
+      // ವಿವರಣೆ
+      const expClass = isCorrect ? 'correct-explain' : (isUnanswered ? '' : 'wrong-explain');
+      html += `<div class="explain ${expClass}"><strong>ವಿವರಣೆ:</strong> ${q.exp}</div>`;
+
+      // ಸಂಬಂಧಿತ ಚಿತ್ರ (ತಪ್ಪು ಅಥವಾ ಉತ್ತರಿಸದ ಪ್ರಶ್ನೆಗಳಿಗೆ)
+      if (q.img && !isCorrect) {
+        html += `<div class="related-image">
+          <img src="${q.img}" alt="ಸಂಬಂಧಿತ ಚಿತ್ರ" loading="lazy">
+          <div class="img-label">ಸಂಬಂಧಿತ ಚಿತ್ರ</div>
+        </div>`;
+      }
+
+      html += `</div>`;
+    });
+
+    if (html === '') {
+      html = '<p style="text-align:center; color:#6e8ba8;">ಈ ವರ್ಗದಲ್ಲಿ ಯಾವುದೇ ಪ್ರಶ್ನೆಗಳಿಲ್ಲ.</p>';
+    }
+
+    reviewList.innerHTML = html;
+  }
+
+  // =============================================================
+  // 8. ಫಿಲ್ಟರ್ ಬಟನ್‌ಗಳು
+  // =============================================================
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      if (quizFinished) renderReview();
+    });
+  });
+
+  // =============================================================
+  // 9. ಮರುಹೊಂದಿಸಿ
+  // =============================================================
+  function resetQuiz() {
+    quizFinished = false;
+    currentIndex = 0;
+    userAnswers.fill(null);
+    currentFilter = 'all';
+    scorePanel.classList.add('hidden');
+    reviewSection.classList.add('hidden');
+    submitBtn.classList.add('hidden');
+    nextBtn.classList.remove('hidden');
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.filter-btn[data-filter="all"]').classList.add('active');
+    renderCurrentQuestion();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // =============================================================
+  // 10. ಆರಂಭ
+  // =============================================================
+  renderCurrentQuestion();
+
+  // ಈವೆಂಟ್ ಲಿಸನರ್‌ಗಳು
+  prevBtn.addEventListener('click', goPrev);
+  nextBtn.addEventListener('click', goNext);
+  submitBtn.addEventListener('click', submitQuiz);
+  resetBtn.addEventListener('click', resetQuiz);
+
+  // ಕೀಬೋರ್ಡ್ ಶಾರ್ಟ್‌ಕಟ್
+  document.addEventListener('keydown', (e) => {
+    if (quizFinished) return;
+    if (e.key === 'ArrowRight') goNext();
+    if (e.key === 'ArrowLeft') goPrev();
+  });
+
+  // ಹೆಸರು ನಮೂದಿಸಿದಾಗ ಸ್ಕೋರ್ ಪ್ಯಾನೆಲ್‌ನಲ್ಲಿ ನವೀಕರಿಸಿ
+  studentNameInput.addEventListener('input', () => {
+    if (!scorePanel.classList.contains('hidden')) {
+      scoreName.textContent = studentNameInput.value.trim() || 'ವಿದ್ಯಾರ್ಥಿ';
+    }
+  });
+</script>
+</body>
+</html>
